@@ -3,10 +3,16 @@
 <body>
 
 <h1>Add new blog here</h1>
+
 <form action='postsubmit' method='get'>
+    <select name='categ'>
+        {% for i in cat  %}
+            <option value={{i.name}}> {{i.name}} </option>
+        {% endfor %}
+    </select>
     <textarea name='title'></textarea>
     <br>
-
+ 
     <textarea name='content'></textarea>
     <br>
 
