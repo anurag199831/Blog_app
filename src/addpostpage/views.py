@@ -16,3 +16,4 @@ def postsubmit(request):
     print(mytitle,mycontent,mycategory)
     Blog.objects.create(title=mytitle,category=mycategory,content= mycontent)
     return HttpResponse("submitted")
+    
