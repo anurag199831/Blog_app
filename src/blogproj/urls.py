@@ -23,4 +23,5 @@ urlpatterns = [
     path('', include('homepage.urls')),
     path('addpost/', include('addpostpage.urls')),
     path('addpost/postsubmit/', include('addpostpage.urls')),
+    # path('accounts/logout/', 'django.contrib.auth.views.logout'),
 ]
