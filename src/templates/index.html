@@ -9,19 +9,23 @@
 <h1>Home page</h1>
 
 
-<<a href="http://127.0.0.1:8000/accounts/logout/">Log out</a>
+<a href="http://127.0.0.1:8000/accounts/logout/">Log out</a><br><br>
+<a href="http://127.0.0.1:8000/addpost/">Add post</a>
+<a href="http://127.0.0.1:8000/submitcategory/edit/">Edit Interests</a>
 <p>You're logged in as {{ user.socialaccount_set.all.0.extra_data.name }}.</p>
 <img height="30" width="30" src="{{ user.socialaccount_set.all.0.get_avatar_url}}" />
 <br>
 
 <br>
-{% for i in cat %}
+{% comment %} {% for i in cat %}
     {{i.name}}
-{% endfor %}
+{% endfor %} {% endcomment %}
 
 
 {% for i in blog %}
+    {% if i.category in ucat %}
     <br> {{i.title}} {{i.category}} {{i.content}} <br>
+    {% endif %}
 {% endfor %}
 
 </body>

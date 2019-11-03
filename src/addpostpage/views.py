@@ -24,5 +24,5 @@ def postsubmit(request):
     mycontent=request.GET.get('content','no value')
     myauthor=request.GET.get('author','no value')
     Blog.objects.create(title=mytitle,category=mycategory,content= mycontent,author=myauthor)
-    return HttpResponse("submitted")
+    return render(request,'postsubmitted.html')
     
