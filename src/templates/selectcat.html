@@ -10,7 +10,7 @@
 <h1>select your choices</h1>
 
 
-<form action="submitcategory" method='get'>
+<form action="127.0.0.1:8000/submitcategory/done" method='get'>
     {% for i in cat %}
         <input type="checkbox" name="{{ i.name }}" value="{{ i.name }}"> {{ i.name }}<br>
     {% endfor %}

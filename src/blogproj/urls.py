@@ -24,6 +24,6 @@ urlpatterns = [
     path('addpost/', include('addpostpage.urls')),
     path('addpost/postsubmit/', include('addpostpage.urls')),
     path('accounts/google/login/callback/userloggedin/', include('loginpage.urls')),
-    path('accounts/google/login/callback/userloggedin/submitcategory/', include('loginpage.urls')),
+    # path('accounts/google/login/callback/userloggedin/submitcategory/', include('loginpage.urls')),
     re_path(r'submitcategory/', include('loginpage.urls')),
 ]
