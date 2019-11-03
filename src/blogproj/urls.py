@@ -23,5 +23,6 @@ urlpatterns = [
     path('', include('homepage.urls')),
     path('addpost/', include('addpostpage.urls')),
     path('addpost/postsubmit/', include('addpostpage.urls')),
-    # path('accounts/logout/', 'django.contrib.auth.views.logout'),
+    path('accounts/google/login/callback/userloggedin/', include('loginpage.urls')),
+    path('accounts/google/login/callback/userloggedin/submitcategory/', include('loginpage.urls')),
 ]

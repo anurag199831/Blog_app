@@ -11,7 +11,7 @@ class Blog(models.Model):
     content=models.CharField(max_length=10000)
     author=models.CharField(max_length=50,default="")
 
-# class UserData(models.Model):
-#     uid=models.IntegerField()
-#     usercat[]=models.
+class UserData(models.Model):
+    uemail=models.CharField(max_length=100,default="")
+    ucategory=models.CharField(max_length=1000)
     

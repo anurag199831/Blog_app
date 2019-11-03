@@ -21,8 +21,8 @@
     <textarea name='content'></textarea>
     <br>
 
-    <button type='submit'> Submit </button>
     <input type="hidden" name="author" value="{{ user.socialaccount_set.all.0.extra_data.name }}" />
+    <button type='submit'> Submit </button>
 
 
 
@@ -31,8 +31,5 @@
 </body>
 </html>
 
-{% else %}
-
-<a href="{% provider_login_url "google" %}"> Login </a>
 
 {% endif %}

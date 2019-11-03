@@ -1,0 +1,26 @@
+{% load socialaccount %}
+{% providers_media_js %}
+
+{% if user.is_authenticated %}
+
+<!DOCTYPE html>
+<html>
+<body>
+
+<h1>select your choices</h1>
+
+
+<form action="submitcategory" method='get'>
+    {% for i in cat %}
+        <input type="checkbox" name="{{ i.name }}" value="{{ i.name }}"> {{ i.name }}<br>
+    {% endfor %}
+  
+    <button type='submit'> Submit </button>
+</form>
+
+
+</body>
+</html>
+
+
+{% endif %}

@@ -134,6 +134,10 @@ AUTHENTICATION_BACKENDS = (
     'django.contrib.auth.backends.ModelBackend',
     'allauth.account.auth_backends.AuthenticationBackend',
     )
+# ACCOUNT_USERNAME_REQUIRED = True
+# ACCOUNT_EMAIL_REQUIRED = True
+# SOCIALACCOUNT_EMAIL_REQUIRED = False
+# SOCIALACCOUNT_QUERY_EMAIL = True
 
 SOCIALACCOUNT_PROVIDERS = {
     'google': {
@@ -149,7 +153,7 @@ SOCIALACCOUNT_PROVIDERS = {
 
 SITE_ID = 1
 
-LOGIN_REDIRECT_URL='/'
+LOGIN_REDIRECT_URL='userloggedin/'
 LOGOUT_REDIRECT_URL='/'
 
 ACCOUNT_LOGOUT_ON_GET = True 
