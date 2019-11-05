@@ -1,26 +1,22 @@
-{% load socialaccount %}
+{% extends "layout.html" %}
+{% block body %}
+{% load crispy_forms_tags %}{% load socialaccount %}
 {% providers_media_js %}
 
 {% if user.is_authenticated %}
 
-<!DOCTYPE html>
-<html>
-<body>
-
-<h1>select your choices</h1>
+<h1>Select your area of Interests </h1>
 
 
-<form action="127.0.0.1:8000/submitcategory/done" method='get'>
+<form action="http://127.0.0.1:8000/submitcategory/done" method='get'>
+<br>
     {% for i in cat %}
-        <input type="checkbox" name="{{ i.name }}" value="{{ i.name }}"> {{ i.name }}<br>
+     <h4>    <input  type="checkbox" name="{{ i.name }}" value="{{ i.name }}"> {{ i.name }}<br>  </h4>
     {% endfor %}
+    <br>
   
     <button type='submit'> Submit </button>
 </form>
 
-
-</body>
-</html>
-
-
 {% endif %}
+{% endblock body %}

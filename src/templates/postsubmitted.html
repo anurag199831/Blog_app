@@ -1,17 +1,14 @@
+{% extends "layout.html" %}
+{% block body %}
+{% load crispy_forms_tags %}
 {% load socialaccount %}
 {% providers_media_js %}
 
-<!DOCTYPE html>
-<html>
-<body>
 
 
-<h1>Post Submitted</h1>
+<h1>Your Article was successfully submitted</h1>
+<br>&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp
+<a href="http://127.0.0.1:8000/addpost/"><button> &nbsp &nbsp &nbsp &nbsp Home &nbsp &nbsp &nbsp &nbsp </button> </a> &nbsp &nbsp &nbsp &nbsp
+<a href="http://127.0.0.1:8000/addpost/"><button >Add another Article</button> </a>
 
-
-<a href="http://127.0.0.1:8000/">Home</a><br><br>
-<a href="http://127.0.0.1:8000/addpost/">Add post</a>
-
-
-</body>
-</html>
+{% endblock body %}

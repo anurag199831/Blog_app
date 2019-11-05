@@ -1,35 +1,46 @@
+{% extends "layout.html" %}
 {% load socialaccount %}
 {% providers_media_js %}
 
-{% if user.is_authenticated %}
 
-<!DOCTYPE html>
-<html>
-<body>
+{% block body %}
+{% load crispy_forms_tags %}
 
-<h1>Add new blog here</h1>
+<div class="row">
+    <div class="col-md-6 offset-md-3">
+        <h3>Create Article</h3>
+        <hr>
+        {% comment %} <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{form.media}}
+            {{form|crispy}}
+            <br>
+            <button type="submit" class="btn btn-danger">Add Article</button>
+        </form> {% endcomment %}
 
-<form action='postsubmit' method='get'>
-    <select name='categ'>
-        {% for i in cat  %}
-            <option value={{i.name}}> {{i.name}} </option>
-        {% endfor %}
-    </select>
-    <textarea name='title'></textarea>
-    <br>
- 
-    <textarea name='content'></textarea>
-    <br>
+        <form action='postsubmit' method='get'>
+        
+        Select Category : 
+        <select name='categ'>
+            {% for i in cat  %}
+                <option value={{i.name}}> {{i.name}} </option>
+            {% endfor %}
+        </select>
+        <br>
+        <br>
+        <textarea rows="1" cols="50" name='title' placeholder="Title"></textarea>
+        <br>
 
-    <input type="hidden" name="author" value="{{ user.socialaccount_set.all.0.extra_data.name }}" />
-    <button type='submit'> Submit </button>
+        <textarea rows="50" cols="50" name='content' placeholder="Content"></textarea>
+        <br>
+
+        <input type="hidden" name="author" value="{{ user.socialaccount_set.all.0.extra_data.name }}" />
+        <button type="submit" class="btn btn-danger">Add Article</button>
+        
+        </form>
+
+    </div>
+</div>
 
 
-
-</form>
-
-</body>
-</html>
-
-
-{% endif %}
+{% endblock body %}

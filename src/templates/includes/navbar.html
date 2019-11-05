@@ -1,0 +1,50 @@
+
+{% load socialaccount %}
+{% providers_media_js %}
+{% load staticfiles %}
+
+<nav class="navbar navbar-toggleable-md navbar-inverse fixed-top bg-inverse">
+  <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarCollapse"
+    aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <a class="navbar-brand" href="http://127.0.0.1:8000">InstiBlog</a>
+
+  <div class="collapse navbar-collapse" id="navbarCollapse">
+    <ul class="navbar-nav mr-auto">
+      {% if request.user.is_authenticated %}
+      <li class="nav-item active">
+        <a class="nav-link" href="http://127.0.0.1:8000/addpost">Add Post</a>
+      </li>
+      <li class="nav-item active">
+        <a class="nav-link" href="http://127.0.0.1:8000/submitcategory/edit/">Edit Category</a>
+      </li>
+      {% endif %}
+
+
+    </ul>
+
+    <ul class="navbar-nav ml-auto">
+      {% if request.user.is_authenticated %}
+      <li class="nav-item active">
+        <a class="nav-link" href=""><img height="25" width="25" src="{{ user.socialaccount_set.all.0.get_avatar_url}}" /></a>
+      </li>
+      <li class="nav-item active">
+        <a class="nav-link" href="">{{ user.socialaccount_set.all.0.extra_data.name }}</a>
+      </li>
+      <li class="nav-item active">
+        <a class="nav-link" href="http://127.0.0.1:8000/accounts/logout/">Logout</a>
+      </li>
+      {% else %}
+      <li class="nav-item active">
+          {% load staticfiles %}
+        <a class="navbar-brand" href="{% provider_login_url 'google' %}"><img height='40' width='200' src= "{% static "logo.png" %}" / ></a>
+      </li>
+
+      {% endif %}
+
+    </ul>
+  </div>
+
+
+</nav>
