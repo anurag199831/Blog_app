@@ -49,7 +49,7 @@ INSTALLED_APPS = [
     'allauth.socialaccount.providers.google',
 
     # "article",
-    "user",
+    # "user",
     'crispy_forms',
     "ckeditor",
     'django_cleanup',

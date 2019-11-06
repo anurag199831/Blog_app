@@ -16,40 +16,40 @@
 </div>
 
 {% if blog %}
-
 {% for article in blog %}
-<div class="row">
-  <div class="col-md-10 offset-md-3">
+  {% if article.category in ucat %}
+    <div class="row">
+      <div class="col-md-10 offset-md-3">
 
-    <!-- Post Content Column -->
-    <div class="col-lg-8">
+        <!-- Post Content Column -->
+        <div class="col-lg-8">
 
-        <h2 class="mt-4">{{article.title}}</h2>
+            <h2 class="mt-4">{{article.title}}</h2>
 
-      <!-- Author -->
-      <p class="lead">
+          <!-- Author -->
+          <p class="lead">
 
-        Published By {{article.author}}
-      </p>
+            Published By {{article.author}}
+          </p>
 
-      <hr>
+          <hr>
 
 
-      <hr>
+          <hr>
 
-      <!-- Post Content -->
-      <p class="lead">
-        {% comment %} {{article.content|safe|truncatewords:50}} {% endcomment %}
-        {{article.content}}
-      </p>
+          <!-- Post Content -->
+          <p class="lead">
+            {% comment %} {{article.content|safe|truncatewords:50}} {% endcomment %}
+            {{article.content}}
+          </p>
 
-      {% comment %} <a style="float : right;" href="" class="btn btn-danger">Read More</a> {% endcomment %}
-      <hr>
+          {% comment %} <a style="float : right;" href="" class="btn btn-danger">Read More</a> {% endcomment %}
+          <hr>
 
+        </div>
+      </div>
     </div>
-  </div>
-</div>
-
+  {% endif %}
 {% endfor %}
 
 
