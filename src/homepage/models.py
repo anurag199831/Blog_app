@@ -11,7 +11,8 @@ class Category(models.Model):
 
 class Blog(models.Model):
     title=models.CharField(max_length=100)
-    category=models.ForeignKey(Category,on_delete=models.CASCADE)
+    #category=models.ForeignKey(Category,on_delete=models.CASCADE)
+    category=models.CharField(max_length=50)
     content=models.CharField(max_length=10000)
     author=models.CharField(max_length=50,default="")
     creation_date=models.DateTimeField(default=timezone.now)
