@@ -1,7 +1,6 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 from homepage.models import Category,Blog,UserData
-# Create your views here.
 
 
 def index(request):
@@ -12,14 +11,24 @@ def index(request):
     temp=UserData.objects.filter(uemail=curremail).exists()
     
     catg= Category.objects.all()
-    params={'cat':catg}
+    temp2 = UserData.objects.get(uemail=request.user.email)
+    ucat=temp2.ucategory.split(",")[1:]
+    params={'cat':catg,'ucat':ucat}
+    print(ucat)
     if temp:
         return render(request,'addpost.html',params)
     else:
         return HttpResponse("<h1> This is choice selection page <h1>")
 
 def postsubmit(request):
-    mycategory=request.GET.get('categ','no value')
+    # mycategory=request.GET.get('categ','no value')
+    catg= Category.objects.all()
+    selected=''
+    for i in catg:
+        temp=request.GET.get(i.name,'no value')
+        if temp != 'no value':
+            selected=selected+','+i.name
+    mycategory=selected
     mytitle=request.GET.get('title','no value')
     mycontent=request.GET.get('content','no value')
     myauthor=request.GET.get('author','no value')

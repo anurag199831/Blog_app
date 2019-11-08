@@ -10,22 +10,22 @@
     <div class="col-md-6 offset-md-3">
         <h3>Create Article</h3>
         <hr>
-        {% comment %} <form method="post" enctype="multipart/form-data">
-            {% csrf_token %}
-            {{form.media}}
-            {{form|crispy}}
-            <br>
-            <button type="submit" class="btn btn-danger">Add Article</button>
-        </form> {% endcomment %}
 
         <form action='postsubmit' method='get'>
         
         Select Category : 
-        <select name='categ'>
+        {% comment %} <select name='categ'>
             {% for i in cat  %}
                 <option value={{i.name}}> {{i.name}} </option>
             {% endfor %}
-        </select>
+        </select> {% endcomment %}
+
+        {% for i in cat %}
+        {% if  i.name in ucat %}
+        <input  type="checkbox" name="{{ i.name }}" value="{{ i.name }}"> {{ i.name }}
+        {% endif %}
+        {% endfor %}
+        <br>
         <br>
         <br>
         <textarea rows="1" cols="50" name='title' placeholder="Title"></textarea>
