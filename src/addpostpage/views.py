@@ -32,15 +32,22 @@ def postsubmit(request):
     mytitle=request.POST.get('title','no value')
     mycontent=request.POST.get('content','no value')
     myauthor=request.POST.get('author','no value')
-    # image=request.POST.get('image',False)
-    print(request.FILES)
-    if request.FILES :
-        image=(request.FILES['image'])
-        myflag=True
-    else: 
-        image='empty'
-        myflag=False
+    
+    image=request.FILES.get('image','empty')
+    video=request.FILES.get('video','empty')
+    myflag1=False
+    myflag2=False
+    if image != 'empty':
+        myflag1=True
+    if video != 'empty':
+        myflag2=True
+    # if request.FILES :
+    #     image=(request.FILES['image'])
+    #     myflag=True
+    # else: 
+    #     image='empty'
+    #     myflag=False
     myid=mytitle+myauthor
-    Blog.objects.create(bid=myid,title=mytitle,category=mycategory,content= mycontent,author=myauthor,img=image,fileflag=myflag)
+    Blog.objects.create(bid=myid,title=mytitle,category=mycategory,content= mycontent,author=myauthor,img=image,vid=video,imgflag=myflag1,vidflag=myflag2)
     return render(request,'postsubmitted.html')
     

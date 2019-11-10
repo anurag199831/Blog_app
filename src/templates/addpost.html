@@ -22,7 +22,10 @@
             {% endfor %}
             <br>
             <br> 
-            <input type="file" name='image' >
+            <button id="addimageid1" type="button"  onclick="func(1)">Add Image</button>
+            <input id="imgfileid1" type="file" name='image' style="display: none;" >
+            <button id="addimageid2" type="button" onclick="func(2)">Add Video</button>
+            <input id="vidfileid2" type="file" name='video' style="display: none;">
 
             <br>
             <br>
@@ -39,6 +42,25 @@
 
     </div>
 </div>
+<script>
+function func(a)
+{
+    if(a==1)
+    {
+        x=addimageid1;
+        y=imgfileid1;
+    }
+    else
+    {
+        x=addimageid2;
+        y=vidfileid2;
+    }
 
+    y.style.display="inline";
+    x.style.display="none";
+    
+}
+
+</script>
 
 {% endblock body %}

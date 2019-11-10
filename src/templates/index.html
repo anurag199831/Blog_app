@@ -37,8 +37,16 @@
             {{article.content|safe|truncatewords:50}}
           </div>
           <div id="{{article.bid|add:'large'}}" style="display: none;"> 
-            {% if article.fileflag %}
+            {% if article.imgflag %}
             <img src="media/{{article.img}} " alt="image error" width=100% heigth=auto >
+            <br>
+            <br>
+            {% endif %}
+            {% if article.vidflag %}
+            <video width=100% height=auto controls>
+            <source src="media/{{article.vid}}" type="video/mp4"> </source>
+            Your browser does not support the video tag.
+            </video>
             <br>
             <br>
             {% endif %}
