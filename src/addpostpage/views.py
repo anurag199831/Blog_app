@@ -25,14 +25,22 @@ def postsubmit(request):
     catg= Category.objects.all()
     selected=''
     for i in catg:
-        temp=request.GET.get(i.name,'no value')
+        temp=request.POST.get(i.name,'no value')
         if temp != 'no value':
             selected=selected+','+i.name
     mycategory=selected
-    mytitle=request.GET.get('title','no value')
-    mycontent=request.GET.get('content','no value')
-    myauthor=request.GET.get('author','no value')
+    mytitle=request.POST.get('title','no value')
+    mycontent=request.POST.get('content','no value')
+    myauthor=request.POST.get('author','no value')
+    # image=request.POST.get('image',False)
+    print(request.FILES)
+    if request.FILES :
+        image=(request.FILES['image'])
+        myflag=True
+    else: 
+        image='empty'
+        myflag=False
     myid=mytitle+myauthor
-    Blog.objects.create(bid=myid,title=mytitle,category=mycategory,content= mycontent,author=myauthor)
+    Blog.objects.create(bid=myid,title=mytitle,category=mycategory,content= mycontent,author=myauthor,img=image,fileflag=myflag)
     return render(request,'postsubmitted.html')
     

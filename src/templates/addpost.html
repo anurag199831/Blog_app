@@ -11,31 +11,29 @@
         <h3>Create Article</h3>
         <hr>
 
-        <form action='postsubmit' method='get'>
-        
-        Select Category : 
-        {% comment %} <select name='categ'>
-            {% for i in cat  %}
-                <option value={{i.name}}> {{i.name}} </option>
+        <form action='postsubmit/' method='post' enctype="multipart/form-data">
+            {% csrf_token %}
+            Select Category : 
+
+            {% for i in cat %}
+            {% if  i.name in ucat %}
+            <input  type="checkbox" name="{{ i.name }}" value="{{ i.name }}"> {{ i.name }}
+            {% endif %}
             {% endfor %}
-        </select> {% endcomment %}
+            <br>
+            <br> 
+            <input type="file" name='image' >
 
-        {% for i in cat %}
-        {% if  i.name in ucat %}
-        <input  type="checkbox" name="{{ i.name }}" value="{{ i.name }}"> {{ i.name }}
-        {% endif %}
-        {% endfor %}
-        <br>
-        <br>
-        <br>
-        <textarea rows="1" cols="50" name='title' placeholder="Title"></textarea>
-        <br>
+            <br>
+            <br>
+            <textarea rows="1" cols="50" name='title' placeholder="Title"></textarea>
+            <br>
 
-        <textarea rows="50" cols="50" name='content' placeholder="Content"></textarea>
-        <br>
+            <textarea rows="50" cols="50" name='content' placeholder="Content"></textarea>
+            <br>
 
-        <input type="hidden" name="author" value="{{ user.socialaccount_set.all.0.extra_data.name }}" />
-        <button type="submit" class="btn btn-danger">Add Article</button>
+            <input type="hidden" name="author" value="{{ user.socialaccount_set.all.0.extra_data.name }}" />
+            <button type="submit" class="btn btn-danger">Add Article</button>
         
         </form>
 

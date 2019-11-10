@@ -23,31 +23,25 @@
 
         <!-- Post Content Column -->
         <div class="col-lg-8">
-
             <h2 class="mt-4">{{article.title}}</h2>
-
           <!-- Author -->
           <p class="lead">
-
             Published By {{article.author}}
             on {{article.creation_date}}
           </p>
-
           <hr>
-
-
           <hr>
-
           <!-- Post Content -->
           <p class="lead">
-          
-
-
-
           <div id="{{article.bid}}"> 
             {{article.content|safe|truncatewords:50}}
           </div>
           <div id="{{article.bid|add:'large'}}" style="display: none;"> 
+            {% if article.fileflag %}
+            <img src="media/{{article.img}} " alt="image error" width=100% heigth=auto >
+            <br>
+            <br>
+            {% endif %}
             {{article.content}}
           </div>
           </p>

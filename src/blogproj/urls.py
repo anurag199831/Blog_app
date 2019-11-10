@@ -15,6 +15,8 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path,include,re_path
+from django.conf import settings
+from django.conf.urls.static import static
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -26,4 +28,4 @@ urlpatterns = [
     path('accounts/google/login/callback/userloggedin/', include('loginpage.urls')),
     # path('accounts/google/login/callback/userloggedin/submitcategory/', include('loginpage.urls')),
     re_path(r'submitcategory/', include('loginpage.urls')),
-]
+]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
