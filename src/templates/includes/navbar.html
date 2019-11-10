@@ -27,10 +27,7 @@
     <ul class="navbar-nav ml-auto">
       {% if request.user.is_authenticated %}
       <li class="nav-item active">
-        <a class="nav-link" href=""><img height="25" width="25" src="{{ user.socialaccount_set.all.0.get_avatar_url}}" /></a>
-      </li>
-      <li class="nav-item active">
-        <a class="nav-link" href="">{{ user.socialaccount_set.all.0.extra_data.name }}</a>
+        <a class="nav-link" href=""><img height="25" width="25" src="{{ user.socialaccount_set.all.0.get_avatar_url}}" /> {{ user.socialaccount_set.all.0.extra_data.name }}</a>
       </li>
       <li class="nav-item active">
         <a class="nav-link" href="http://127.0.0.1:8000/accounts/logout/">Logout</a>

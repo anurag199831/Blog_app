@@ -9,6 +9,7 @@ class Category(models.Model):
         return self.name
 
 class Blog(models.Model):
+    bid=models.CharField(max_length=200,default="")
     title=models.CharField(max_length=100)
     #category=models.ForeignKey(Category,on_delete=models.CASCADE)
     category=models.CharField(max_length=50)

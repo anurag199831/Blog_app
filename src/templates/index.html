@@ -17,8 +17,6 @@
 
 {% if blog %}
 {% for article in blog %}
-  {% comment %} {% temp= article.category.split(",")[1:] %} {% endcomment %}
-  {% comment %} {% if article.category in ucat %} {% endcomment %}
   {% if article.title in blog2 %}
     <div class="row">
       <div class="col-md-10 offset-md-3">
@@ -32,6 +30,7 @@
           <p class="lead">
 
             Published By {{article.author}}
+            on {{article.creation_date}}
           </p>
 
           <hr>
@@ -41,11 +40,18 @@
 
           <!-- Post Content -->
           <p class="lead">
-            {% comment %} {{article.content|safe|truncatewords:50}} {% endcomment %}
-            {{article.content}}
-          </p>
+          
 
-          {% comment %} <a style="float : right;" href="" class="btn btn-danger">Read More</a> {% endcomment %}
+
+
+          <div id="{{article.bid}}"> 
+            {{article.content|safe|truncatewords:50}}
+          </div>
+          <div id="{{article.bid|add:'large'}}" style="display: none;"> 
+            {{article.content}}
+          </div>
+          </p>
+          <button id="{{article.bid|add:'button'}}" style="float : right;" onclick="func('{{article.bid}}')" class="btn btn-danger">Read More</button>
           <hr>
 
         </div>
@@ -54,6 +60,27 @@
   {% endif %}
 {% endfor %}
 
+<script>
+
+function func(a) {
+   var x = document.getElementById(a);
+   var y = document.getElementById(a+'large');
+   var z = document.getElementById(a+'button');
+   if(x.style.display=="none")
+   {
+      x.style.display="inline";
+      y.style.display="none";
+      z.innerHTML="Read More";
+   }
+   else
+   {
+      x.style.display="none";
+      y.style.display="inline";
+      z.innerHTML="Read Less";
+   }
+}
+
+</script>
 
 {% else %}
 <div class="row">
@@ -68,4 +95,7 @@
 </div>
 {% endif %}
 
+
+
 {% endblock body %}
+
