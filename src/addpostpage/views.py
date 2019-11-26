@@ -1,6 +1,21 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 from homepage.models import Category,Blog,UserData
+import re
+
+def remove_bad_words(inputs):
+    badwords = []
+    with open('cussWords.txt',"r") as fp:
+        for line in fp:
+            word = line.strip()
+            if word!="":
+                badwords.append(word)
+    
+    for i in badwords:
+        length = len(i)
+        inputs = re.sub(r'\b'+i+r'\b','*'*length,inputs)
+
+    return inputs
 
 
 def index(request):
@@ -31,6 +46,8 @@ def postsubmit(request):
     mycategory=selected
     mytitle=request.POST.get('title','no value')
     mycontent=request.POST.get('content','no value')
+    mytitle=remove_bad_words(mytitle)
+    mycontent=remove_bad_words(mycontent)
     myauthor=request.POST.get('author','no value')
     
     image=request.FILES.get('image','empty')
