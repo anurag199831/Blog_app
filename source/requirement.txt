@@ -1,0 +1,9 @@
+Install below mentioned packages using pip3 install
+1. django
+2. django-all-auth
+3. django-ckeditor
+4. django-cleanup
+5. django-crispy-forms
+6. django-js-asset
+7. django-multiselectfield
+8. Pillow
