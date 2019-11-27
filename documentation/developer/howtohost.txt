@@ -1,0 +1,6 @@
+Basics Of How To Host :-
+1. Get Source code from the above mentioned git link
+2. Install Software mentioned in the requirement.txt present inside source directory
+3. Go to source directory
+4. Run command "python3 manange.py runserver"
+5. Now browse to the URL mentioned in the output of above command.
