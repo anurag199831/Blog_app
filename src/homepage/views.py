@@ -5,6 +5,16 @@ from .models import Category,Blog,UserData
 # Create your views here.
 
 def index(request):
+    """
+    This function displays homepage of blog 
+
+    Args:
+        request
+
+    Returns:
+        index.html: HTML page 
+        
+    """
     if request.user.is_authenticated:
         catg = Category.objects.all()
         blog = Blog.objects.all()

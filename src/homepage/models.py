@@ -3,12 +3,26 @@ from django.utils import timezone
 
 
 class Category(models.Model):
+    """
+    This is the category class
+
+    Args:
+        models.Model
+ 
+    """
     name=models.CharField(max_length=50)
 
     def __str__(self):
         return self.name
 
 class Blog(models.Model):
+    """
+    This is the class which contains information about fields of a particular Blog
+
+    Args:
+        models.Model
+ 
+    """
     bid=models.CharField(max_length=200,default="")
     title=models.CharField(max_length=100)
     category=models.CharField(max_length=50)
@@ -27,6 +41,13 @@ class Blog(models.Model):
         ordering =  ['-creation_date']
 
 class UserData(models.Model):
+    """
+    This is the class which contains information about users who have login
+
+    Args:
+        models.Model
+ 
+    """
     uemail=models.CharField(max_length=100,default="")
     ucategory=models.CharField(max_length=1000)
     

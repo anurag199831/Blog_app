@@ -4,6 +4,16 @@ from homepage.models import Category,Blog,UserData
 # Create your views here.
 
 def submitcategory(request):
+    """
+    This function submits category of a user to database 
+
+    Args:
+        request
+
+    Returns:
+        index.html: HTML page 
+        
+    """
     print('hello2')
     catg= Category.objects.all()
     selected=''
@@ -42,6 +52,16 @@ def submitcategory(request):
     
 
 def editcat(request):
+    """
+    This function edit user category 
+
+    Args:
+        request
+
+    Returns:
+        selectcat.html: HTML page 
+        
+    """
     print('hello')
     catg= Category.objects.all()
     blog= Blog.objects.all()
@@ -49,6 +69,16 @@ def editcat(request):
     return render(request,'selectcat.html',params)
 
 def index(request):
+    """
+    This function redirects to homepage after logging in
+
+    Args:
+        request
+
+    Returns:
+        index.html: HTML page 
+        
+    """
     curremail=request.user.email
     temp=UserData.objects.filter(uemail=curremail).exists()
     

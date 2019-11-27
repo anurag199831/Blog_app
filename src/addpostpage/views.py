@@ -4,6 +4,16 @@ from homepage.models import Category,Blog,UserData
 import re
 
 def remove_bad_words(inputs):
+    """
+        This function removes bad words from input
+
+    Args:
+        inputs: input string which contains bad words
+        
+    Returns:
+        inputs: output string which don't have bad words
+        
+    """
     badwords = []
     with open('cussWords.txt',"r") as fp:
         for line in fp:
@@ -19,6 +29,16 @@ def remove_bad_words(inputs):
 
 
 def index(request):
+    """
+    This function is responsible for displaying add post page
+
+    Args:
+        request
+        
+    Returns: 
+        addpost.html: HTTP page
+        
+    """
     if request.user.is_authenticated:
         curremail=request.user.email
     else:
@@ -36,7 +56,16 @@ def index(request):
         return HttpResponse("<h1> This is choice selection page <h1>")
 
 def postsubmit(request):
-    # mycategory=request.GET.get('categ','no value')
+    """
+    This function displays a page which appears afetr submission of post 
+
+    Args:
+        request
+
+    Returns:
+        postsubmitted.html: HTML page 
+        
+    """
     catg= Category.objects.all()
     selected=''
     for i in catg:
