@@ -4,7 +4,7 @@
 					Team-Members
 		Anurag Chaudhary (193050061) :- Backend + Frontend + Documentation
 		Himanshu Aswal (193059001) :- Frontend + Backend + Documentation
-		Sanyan Raj (1930590096) :- Documentation + Backend + Frontend
+		Sanyan Raj (193050096) :- Documentation + Backend + Frontend
 ===========================================================================================================
 ===========================================================================================================
 					Motivation
